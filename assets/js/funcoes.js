@@ -91,15 +91,3 @@ function verificarDerivacao(der){
     }
     return ["0","0"];
 }
-
-$('#naoTerminal').on('change', function(){
-    $(this).val($(this).val().toUpperCase())
-})
-
-$('#tabela tbody').on('click', function() {
-    console.log($(this).children())
-})
-
-$('#remove').on('click', function(){
-    console.log('oi')
-})
