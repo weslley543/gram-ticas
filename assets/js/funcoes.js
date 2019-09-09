@@ -18,6 +18,9 @@ $('#naoTerminal').val()
 $('#add').on('click', function(){
     var expNaoTerminal = $('#naoTerminal').val();
     var expTerminal = $('#terminal').val();
+    if($('#terminal').val() ==""){
+        expTerminal = '$';
+    }
     $('#corpoTabela').append('<tr><td>'+expNaoTerminal+'</td><td>'+expTerminal+'</td></tr>');
 
     for(var i=0; i<tabelaGramatica.length; i++){
@@ -44,6 +47,7 @@ $('#testeGrammar').on('click', function(){
     var exp = $('#expTeste').val();
     var aux = resolver(tabelaGramatica[0].naoTerminal,tabelaGramatica[0].naoTerminal,exp)
     if(aux==true){
+        
         $('#expTeste').css('background', 'green');
     }else{
         $('#expTeste').css('background', 'tomato');
