@@ -4,8 +4,8 @@ var tabela = $('#tabela')
 var selecionado;
 //regex
 $('#teste').on('click', function(){
-    var regex = new RegExp($('#exp').val());
-    var ok = regex.exec($('#texto').val());
+    let regex = new RegExp($('#exp').val());
+    let ok = regex.exec($('#texto').val());
     if(ok){
         $('#texto').css('background', 'green');
         
@@ -23,9 +23,9 @@ $('#add').on('click', function(){
     }
     $('#corpoTabela').append('<tr><td>'+expNaoTerminal+'</td><td>'+expTerminal+'</td></tr>');
 
-    for(var i=0; i<tabelaGramatica.length; i++){
+    for(let i=0; i<tabelaGramatica.length; i++){
         if(tabelaGramatica[i].naoTerminal == expNaoTerminal){
-            for (var j = 0; j < tabelaGramatica[i].expressao.length; j++) {
+            for (let j = 0; j < tabelaGramatica[i].expressao.length; j++) {
                 if(tabelaGramatica[i].expressao[j] == expTerminal){
                     return true;
                 }
@@ -44,8 +44,8 @@ $('#add').on('click', function(){
 
 $('#testeGrammar').on('click', function(){
     
-    var exp = $('#expTeste').val();
-    var aux = resolver(tabelaGramatica[0].naoTerminal,tabelaGramatica[0].naoTerminal,exp)
+    let exp = $('#expTeste').val();
+    let aux = resolver(tabelaGramatica[0].naoTerminal,tabelaGramatica[0].naoTerminal,exp)
     if(aux==true){
         
         $('#expTeste').css('background', 'green');
@@ -56,18 +56,18 @@ $('#testeGrammar').on('click', function(){
 
 function resolver(exp, naoTerminal, entrada){ 
     //console.log(exp,naoTerminal, entrada);
-    var tam = tabelaGramatica.length;
+    let tam = tabelaGramatica.length;
     if(exp == entrada && naoTerminal == "0") return true;
     if(exp.length > entrada.length){
         return false;
     }
-    for (var i = 0; i < tam; i++) {
+    for (let i = 0; i < tam; i++) {
         if(tabelaGramatica[i].naoTerminal == naoTerminal){
-            for(var j = 0; j<tabelaGramatica[i].expressao.length; j++){
+            for(let j = 0; j<tabelaGramatica[i].expressao.length; j++){
 
-                var der = tabelaGramatica[i].expressao[j];
-                var naoTerminalDer = verificarDerivacao(der);
-                var novoexp = exp.replace(naoTerminal, der);
+                let der = tabelaGramatica[i].expressao[j];
+                let naoTerminalDer = verificarDerivacao(der);
+                let novoexp = exp.replace(naoTerminal, der);
 
                 if(naoTerminalDer[0]=="0"){
                     if(resolver(novoexp, naoTerminalDer[0], entrada)){
@@ -85,7 +85,7 @@ function resolver(exp, naoTerminal, entrada){
 }
 
 function verificarDerivacao(der){
-    var tam = der.length-1;
+    let tam = der.length-1;
     if(der.charCodeAt(tam)>=65 && der.charCodeAt(tam)<=90){
         return [der.charAt(tam),"GLD"];
     }
