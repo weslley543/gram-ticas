@@ -13,7 +13,10 @@ $('#teste').on('click', function(){
         $('#texto').css('background', 'tomato');
     }
 });
-$('#naoTerminal').val()
+$('#naoTerminal').focusout(function(){
+    let aux = $(this).val().toUpperCase();
+    $(this).val(aux);
+});
 //funcao para adicionar os filhos e add no vetor de manipulação
 $('#add').on('click', function(){
     var expNaoTerminal = $('#naoTerminal').val();
