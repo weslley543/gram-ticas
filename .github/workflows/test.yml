@@ -2,6 +2,8 @@ name: Build and Test
 
 on: ["push", "pull_request"]
 
+env: 
+  NODE_COVERALLS_DEBUG: 1
 
 jobs:
 
